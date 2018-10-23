@@ -1,3 +1,4 @@
+// Add firebase credentials here
 export const environment = {
   production: true,
   firebase: {
