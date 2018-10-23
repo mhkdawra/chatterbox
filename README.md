@@ -16,8 +16,8 @@ You can generate your firebase credentials using https://console.firebase.google
 The firebase database collection should look like this:
 
 rooms(collection) => roomname1 (document) => chat_messages(collection) => (messages are stored here as documents)
-                     roomname2 (document) => chat_messages(collection) => (messages are stored here as documents)
-                     roomname3 (document) => chat_messages(collection) => (messages are stored here as documents)
+											roomname2 (document) => chat_messages(collection) => (messages are stored here as documents)
+											roomname3 (document) => chat_messages(collection) => (messages are stored here as documents)
                      
 messages have the following keys: message(string), msgDate(timestamp), user(string)
 
