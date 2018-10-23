@@ -1,0 +1,61 @@
+<div class = "main-box">
+<span *ngIf = "!hasUser; then condition1 else condition2"></span> 
+
+	<ng-template #condition1>
+	<br/>	
+
+	<form>
+    
+	<mat-form-field>
+		<input matInput type="text" required name="userName" [(ngModel)]="userName" (keydown)="handleUser($event)" placeholder="Username">
+		<mat-error *ngIf="noUserName;">
+      Username required
+    </mat-error>
+	</mat-form-field>
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		
+		<mat-form-field>
+	    <mat-select required [(ngModel)]='roomName' name="roomName" placeholder='Select Room'>
+	      <mat-option [value]="room" *ngFor="let room of rooms">{{room}}</mat-option>
+			</mat-select>
+	    <mat-error *ngIf="noRoom;">
+				Room required
+		  </mat-error>
+    </mat-form-field>
+		
+		<br/><br/>
+    <button  mat-flat-button color="primary" (click)="enterUser()">Enter Room</button>
+		<br />
+	</form>
+	</ng-template>
+
+	<ng-template #condition2>
+		<br/>
+		<button mat-fab (click)="leaveRoom()">
+  		<mat-icon>exit_to_app</mat-icon>
+		</button>
+		<div class="chat-container">
+			<mat-card class="main-card">
+				<mat-list class="chat-list">
+					<br/><br/>
+					<mat-list-item *ngFor="let message of messages | async" [ngClass]="[(message.user === userName)? 'chat-list-item': '']">
+						{{message.user}} &nbsp;<b>{{message.msgDate.toDate()|date:'short'}}</b>: &nbsp; {{message.message}}
+					</mat-list-item>
+					<br/>
+				</mat-list>
+
+				<div class="chat-footer-container">
+					<mat-icon>message</mat-icon>
+					<mat-form-field class="chat-input">
+						<input #inputMessage matInput type="text" name="msg" [(ngModel)]="msg" (keydown)="handleSubmit($event)" placeholder="Your message..">
+						<mat-hint align="end">{{inputMessage.value.length}}/140</mat-hint>
+					</mat-form-field>
+					<button mat-icon-button color="primary">
+						<mat-icon (click)="newMessage()" aria-label="Send message">send</mat-icon>
+					</button>
+				</div>
+			
+			</mat-card>
+		</div>
+	</ng-template>
+</div>
