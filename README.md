@@ -25,6 +25,6 @@ roomname3 (document) => chat_messages(collection) => (messages are stored here a
                      
 messages have the following keys: message(string), msgDate(timestamp), user(string)
 
-## Development server
+## Development Server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
